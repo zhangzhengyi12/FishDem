@@ -33,8 +33,8 @@ function lerpAngle(a, b, t) {
 }
 
 function lerpDistance(aim, cur, ratio) {
-	var delta = cur - aim;
-	return aim + delta * ratio;
+	var delta =aim- cur ;
+	return cur+ delta * ratio;
 }
 
 function inOboundary(arrX, arrY, l, r, t, b) { //在l r t b范围内的检测
