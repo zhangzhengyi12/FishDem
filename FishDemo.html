@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            padding:10px;
+        }
+        .bg{
+            height:600px;
+            width:800px;
+            margin:0 auto;
+        }
+        #canvas-all {
+            height:600px;
+            width:800px;
+            position:relative;
+        }
+        #canvas1{
+            position:absolute;
+            left:0;
+            bottom:0;
+            z-index:0;
+        }
+        #canvas2{
+            position:absolute;
+            left: 0;
+            bottom:0;
+            z-index:1;
+        }
+    </style>
+    <!--设置一些基本宽高，设置canvas包裹层为realtive canvas1/2设置为abs来让两个绘图层叠加-->
+</head>
+<body>
+ <div class="bg">
+     <div id="canvas-all">
+         <canvas id="canvas1" width="800" height="600"></canvas>
+         <canvas id="canvas2" width="800" height="600"></canvas>
+     </div>
+ </div>
+ <script type="text/javascript" src="js/addLoadEvent.js"></script>
+ <script type="text/javascript" src="js/commonFunctions.js"></script>
+ <script type="text/javascript" src="js/background.js"></script>
+ <script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>
