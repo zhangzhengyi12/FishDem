@@ -29,6 +29,16 @@ fruitObj.prototype.init = function(){
     console.log("fruit com");
 }
 
+fruitObj.prototype.dead = function(i){
+    this.alive[i] = false;
+    if(this.fruitType == "blue"){
+        mom.eatFruit += 400;
+    }else {
+        mom.eatFruit += 200;
+    }
+}
+
+
 fruitObj.prototype.draw = function(){
     for(var i=0;i<this.num;i++){
         if(this.alive[i]){
@@ -57,9 +67,11 @@ fruitObj.prototype.born = function(i){
     var aneId = parseInt(Math.random()*ane.num);
     this.x[i] = ane.x[aneId];
     this.y[i] = canWidth - ane.len[aneId];
-    if(Math.random()<0.05){
+    this.fruitType[i] = this.fruit;
+    if(Math.random()<0.2){
         this.fruitType[i] = "blue";
     }
+    //注意在随机果实之前重设一下果实类型，不然之前有过一次随机成功的复活还是特殊果实
 
     //首先确定依赖与哪个海葵
     // 然后提取该海葵的XY信息存放于果实对象的xy数值之中

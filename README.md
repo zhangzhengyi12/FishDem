@@ -19,3 +19,36 @@
 出生函数会随机出来是普通果实还是超级果实
 
 然后在main函数中调用画画函数，画画函数会画出所有激活的果实，然后循环变大并上升，最后失去激活
+
+
+
+
+
+# 记录一个函数 #
+他的作用是让一个物体的角度跟随某个XY值
+
+	var deltaY = mom.y - this.y; 
+	var deltaX = mom.x - this.x;
+	//获取目标物体和当前物体的XY轴的差值
+
+	var beta = Math.atan2(deltaY,deltaX)+Math.PI
+	// 获取两个物体之间的基于极坐标的一个差值。反正弦函数 返回一个-pi ~ +pi之前的一个值
+	this.angle = lerpAngle(beta,this.angle,0.9)
+    //让差值变得平滑
+	ctx1.rotate(this.angle);
+	//让画板旋转，需要配合save 
+
+
+
+# 神奇的循环函数 #
+
+ 		this.babyTailCount = (this.babyTailCount +1) % 8;
+        this.babyTailTimer %= 50; //不断求与 当8%8为
+
+
+# 时间控制的原理 #
+有三个参与者 
+ - 延迟 与过去的时间有关
+ - 目标时间  
+ - count
+如果实际延迟大于目标事件就修改过count 然后检查count是否是一个特殊的状态，如果是就设置一下延迟，好控制下次进去的事件

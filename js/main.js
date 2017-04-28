@@ -7,12 +7,19 @@ var bgPic = new Image();
 var lastTime;
 var deltaTime;
 var canvas1,canvas2,ctx1,ctx2;
+
 var ane;
 var furit;
 var canWidth,canHight;
 var mom;
+var baby;
+
 var mx;
 var my;
+
+var babyTail = [];
+var babyEye = [];
+var badyBody = [];
 //初始化容器
 
 function game(){
@@ -56,9 +63,26 @@ canvas1.addEventListener("mousemove",onMouseMove,false);
     furit.init();
     mom = new momObj();
     mom.init();
+    baby = new babyObj();
+    baby.init();
     //初始化大鱼 海葵 果实
     mx = canWidth * 0.5;
     my = canHight * 0.5;
+    
+    for(var i=0;i<8;i++){
+        babyTail[i] = new Image();
+        babyTail[i].src = "./src/babyTail" + i + ".png";
+    }
+
+    for(var i=0;i<2;i++){
+        babyEye[i] = new Image();
+        babyEye[i].src = "./src/babyEye" + i + ".png";
+    }
+
+    for(var i=0;i<20;i++){
+        badyBody[i] = new  Image();
+        badyBody[i].src = "./src/babyFade" + i + ".png";
+    }
 }
 
 
@@ -67,6 +91,9 @@ function gameloop(){
     window.requestAnimationFrame(gameloop);
     var now = Date.now();
     deltaTime = now - lastTime;
+    if(deltaTime > 40){
+        deltaTime = 40;
+    }
     lastTime = now;
     //显示两帧检测
 
@@ -76,7 +103,9 @@ function gameloop(){
     furit.draw();
      // ctx2.clearRect(0,0,canWidth,canHight);
     mom.draw();
-
+    baby.draw();
+    momFruitsCollision();
+    momBabyCollision();
 }
 
 function onMouseMove(e){

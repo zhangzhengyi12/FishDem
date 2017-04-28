@@ -9,6 +9,7 @@ var momObj = function(){
     this.bigEye = new  Image();
     this.bigBody = new Image();
     this.bigTail = new Image();
+    this.eatFruit = 0;
 }
 
 momObj.prototype.init = function(){
@@ -29,7 +30,7 @@ momObj.prototype.draw = function(){
     var beta = Math.atan2(deltaY,deltaX)+Math.PI
     // console.log(beta);
     this.angle = lerpAngle(beta,this.angle,0.9)
-    console.log(this.angle);
+    // console.log(this.angle);
     ctx1.save();
     ctx1.translate(this.x, this.y); //将当前画布的原点设置为this.x this.y
     ctx1.rotate(this.angle);
