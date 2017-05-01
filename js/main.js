@@ -20,6 +20,13 @@ var my;
 var babyTail = [];
 var babyEye = [];
 var badyBody = [];
+
+var momTail = [];
+var momEye = [];
+var momBodyOra =[];
+var momBodyBlue = [];
+
+var data;
 //初始化容器
 
 function game(){
@@ -83,6 +90,25 @@ canvas1.addEventListener("mousemove",onMouseMove,false);
         badyBody[i] = new  Image();
         badyBody[i].src = "./src/babyFade" + i + ".png";
     }
+
+    for(var i=0;i<8;i++){
+        momTail[i] = new Image();
+        momTail[i].src = "./src/bigTail" + i +".png";
+    }
+
+    for(var i=0;i<2;i++){
+        momEye[i] = new Image();
+        momEye[i].src = "./src/bigEye" + i + ".png";
+    }
+
+    data = new dataObj();
+
+    for(var i=0;i<8;i++){
+        momBodyOra[i] = new Image();
+        momBodyBlue[i] = new Image();
+        momBodyOra[i].src = "./src/bigSwim" + i + ".png";
+        momBodyBlue[i].src = "./src/bigSwimBlue" + i + ".png";
+    }
 }
 
 
@@ -106,9 +132,13 @@ function gameloop(){
     baby.draw();
     momFruitsCollision();
     momBabyCollision();
+    data.draw();
 }
 
 function onMouseMove(e){
+    if(data.gameOver){
+        return;
+    }
     if(e.offsetX || e.layerY){
         mx = e.offsetX == undefined?e.layerX:e.offsetX;
         my = e.offsetY == undefined?e.layerY:e.offsetY;

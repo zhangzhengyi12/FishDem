@@ -80,6 +80,7 @@ babyObj.prototype.draw = function(){
         this.babyBodyCount++;
         if(this.babyBodyCount > 19){
             this.babyBodyCount = 19;
+            data.gameOver = true;
         }
         this.babyBodyTimer %= 300;
         // console.log(this.babyBodyCount);
