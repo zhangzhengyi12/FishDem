@@ -8,6 +8,7 @@ var fruitObj = function(){
     this.y = [];
     this.l = [];
     this.spd = [];
+    this.aneNumber =[];
     this.fruitType = [];
     this.fruit = new Image();
     this.blue = new Image();
@@ -21,6 +22,7 @@ fruitObj.prototype.init = function(){
         this.alive[i] = false;
         this.x[i] = 0;
         this.y[i] = 0;
+        this.aneNumber[i] = 0;
         this.spd[i] = Math.random() * 0.01 + 0.005;
         this.fruitType[i] = "";
         //
@@ -44,13 +46,18 @@ fruitObj.prototype.draw = function(){
         if(this.alive[i]){
 
             if(this.l[i] <=12){
+                var no = this.aneNumber[i];
+                this.x[i] = ane.headx[no];
+                this.y[i] = ane.heady[no];
                 this.l[i] += this.spd[i] * deltaTime;
+                ctx2.drawImage(this.fruitType[i]=="blue"?this.blue:this.fruit,this.x[i]-this.l[i]*0.5,this.y[i]-this.l[i]*0.5,this.l[i],this.l[i]);
             }else {
                 this.y[i] -= 7 * deltaTime * this.spd[i];
+
+                ctx2.drawImage(this.fruitType[i]=="blue"?this.blue:this.fruit,this.x[i]-this.l[i]*0.5,this.y[i]-this.l[i]*0.5,this.l[i],this.l[i]);
             }
 
 
-            ctx2.drawImage(this.fruitType[i]=="blue"?this.blue:this.fruit,this.x[i]-this.l[i]*0.5,this.y[i]-this.l[i]*0.5,this.l[i],this.l[i]);
             //提取XY信息并画出。
 
             if(this.y[i] <= 8){
@@ -65,8 +72,7 @@ fruitObj.prototype.draw = function(){
 fruitObj.prototype.born = function(i){
     this.l[i] = 0;
     var aneId = parseInt(Math.random()*ane.num);
-    this.x[i] = ane.x[aneId];
-    this.y[i] = canWidth - ane.len[aneId];
+    this.aneNumber[i] = aneId;
     this.fruitType[i] = this.fruit;
     if(Math.random()<0.2){
         this.fruitType[i] = "blue";

@@ -27,6 +27,11 @@ var momBodyOra =[];
 var momBodyBlue = [];
 
 var data;
+var wave;
+var hola;
+
+var dust;
+var dustPic = [];
 //初始化容器
 
 function game(){
@@ -109,7 +114,20 @@ canvas1.addEventListener("mousemove",onMouseMove,false);
         momBodyOra[i].src = "./src/bigSwim" + i + ".png";
         momBodyBlue[i].src = "./src/bigSwimBlue" + i + ".png";
     }
+
+    wave = new  waveObj();
+    wave.init();
+
+    hola = new holaObj();
+
+    dust = new dustObj();
+    for(var i=0;i<7;i++){
+        dustPic[i] = new Image();
+        dustPic[i].src = "./src/dust" + i + ".png"
+    }
 }
+
+
 
 
 
@@ -133,6 +151,11 @@ function gameloop(){
     momFruitsCollision();
     momBabyCollision();
     data.draw();
+    wave.draw();
+    hola.draw();
+
+    dust.draw();
+
 }
 
 function onMouseMove(e){

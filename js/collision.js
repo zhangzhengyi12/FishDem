@@ -11,6 +11,7 @@ function momFruitsCollision(){
                     furit.dead(i);
                     data.fruitNum++;
                     mom.momBodyCount ++;
+                    wave.born(furit.x[i],furit.y[i]);
                     if(mom.momBodyCount > 7){
                         mom.momBodyCount = 7;
                     }
@@ -35,6 +36,7 @@ function momBabyCollision(){
         //传入具体的分数
         if(data.fruitNum > 0){
             baby.babyBodyCount = 0;
+            hola.born(baby.x,baby.y);
         }
 
         data.addScore();
