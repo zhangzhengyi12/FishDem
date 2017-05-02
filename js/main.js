@@ -125,6 +125,8 @@ canvas1.addEventListener("mousemove",onMouseMove,false);
         dustPic[i] = new Image();
         dustPic[i].src = "./src/dust" + i + ".png"
     }
+
+    dust.init();
 }
 
 

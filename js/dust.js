@@ -19,7 +19,8 @@ dustObj.prototype.init = function(){
         this.x[i] = Math.random()* canWidth;
         this.y[i] = Math.random()* canHight;
         this.amp[i] = Math.random()*15 + 20;
-        this.NO[i] = Math.floor(Math.random()*7) // 0~6
+        this.NO[i] = Math.floor(Math.random()*7); // 0~6
+        console.log(this.NO[i]);
     }
     this.alpha = 0;
 }
@@ -29,7 +30,7 @@ dustObj.prototype.draw = function(){
     var l = Math.sin(this.alpha);
      for(var i=0;i<this.num;i++){
          var no = this.NO[i];
-         console.log(no);
+         // console.log(no);
          ctx1.drawImage(dustPic[no],this.x[i]+this.amp[i]*l,this.y[i])
      }
 }
